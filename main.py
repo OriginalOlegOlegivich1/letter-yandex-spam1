@@ -9,7 +9,7 @@ load_dotenv()
 
 
 
-with open('main3.json', 'r', encoding="CP1251") as my_file:
+with open('mails.json', 'r', encoding="CP1251") as my_file:
   file_contents = my_file.read()
 mail_file_contents = json.loads(file_contents)
 
@@ -47,14 +47,14 @@ if __name__ == "__main__":
     mail_to= mail
 
     letter = f"""\
-  From: {mail_from}
-  To: {mail_to}
-  Subject: Важно!
-  Content-Type: text/plain; charset="UTF-8";
+From: {mail_from}
+To: {mail_to}
+Subject: Важно!
+Content-Type: text/plain; charset="UTF-8";
 
-  {text_in_mail}"""
-  letter = letter.encode("UTF-8")
-  server.sendmail( mail_from, mail_to, letter )
+{text_in_mail}"""
+    letter = letter.encode("UTF-8")
+    server.sendmail( mail_from, mail_to, letter )
 server.quit()  
 
 
