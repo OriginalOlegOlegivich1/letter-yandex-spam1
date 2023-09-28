@@ -7,9 +7,15 @@ import os
 
 load_dotenv()
 
+import argparse
+parser = argparse.ArgumentParser(
+        description='Емаил рассылочка'
+)
+parser.add_argument('--file_mails', help='введите название файла с почтами в формате .json')
+file_mails=parser.parse_args().file_mails
 
 
-with open('mails.json', 'r', encoding="CP1251") as my_file:
+with open(file_mails, 'r', encoding="CP1251") as my_file:
   file_contents = my_file.read()
 mail_file_contents = json.loads(file_contents)
 
